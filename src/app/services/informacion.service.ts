@@ -5,7 +5,7 @@ import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 @Injectable()
 export class InformacionService {
   info:any = {};
-  nosotros:any = {};
+  equipo:any[] = [];
   cargada:boolean = false;
 
   constructor(public http:Http) {
@@ -25,7 +25,7 @@ export class InformacionService {
     this.http.get("https://byllegurumiangular.firebaseio.com/equipo.json")
     .subscribe(data =>{
       this.cargada = true;
-      this.nosotros = data.json();
+      this.equipo = data.json();
     })
    }
 
