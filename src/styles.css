@@ -20,3 +20,8 @@
     animation-name: fadeIn;
   }
   
+  
+svg path,
+svg rect{
+  fill: #f52d53;
+}
