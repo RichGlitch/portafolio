@@ -5,14 +5,27 @@ import { dashCaseToCamelCase } from '@angular/compiler/src/util';
 @Injectable()
 export class InformacionService {
   info:any = {};
+  nosotros:any = {};
   cargada:boolean = false;
 
   constructor(public http:Http) {
-    this.http.get("assets/data/info.pagina.json")
+    this.carga_info();
+    this.carga_nosotros();
+   }
+
+   public carga_info(){
+     this.http.get("assets/data/info.pagina.json")
     .subscribe(data =>{
-      console.log(data.json());
       this.cargada = true;
       this.info = data.json();
+    })
+   }
+
+   public carga_nosotros(){
+    this.http.get("https://byllegurumiangular.firebaseio.com/equipo.json")
+    .subscribe(data =>{
+      this.cargada = true;
+      this.nosotros = data.json();
     })
    }
 
